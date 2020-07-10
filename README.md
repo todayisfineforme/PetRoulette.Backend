@@ -1,1 +1,25 @@
-# project2Backend
+Api key:IS1IvbHPCjhCTPVzwQMflCqwiGO82HyvrWGhGwtlcKkCbLJu5V.
+
+Secret:GxmOtxnso3f7nYBb4TlgrcBruWNsMMEb2FTmwjDM.
+
+route method:get/post.
+
+curl -d "grant_type=client_credentials&client_id={CLIENT-ID}&client_secret={CLIENT-SECRET}" https://api.petfinder.com/v2/oauth2/token
+
+
+Api access using Get: curl -H "Authorization: Bearer {YOUR_ACCESS_TOKEN}" GET https://api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
+
+GET https://api.petfinder.com/v2/animals
+
+GET https://api.petfinder.com/v2/animals/{id}
+
+GET https://api.petfinder.com/v2/types
+
+GET https://api.petfinder.com/v2/types/{type}
+
+GET https://api.petfinder.com/v2/types/{type}/breeds
+
+GET https://api.petfinder.com/v2/organizations
+
+GET https://api.petfinder.com/v2/organizations/{id}
+
