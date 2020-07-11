@@ -1,5 +1,4 @@
 const User = require('../model/user');
-const { request, response } = require('express');
 
 class UserController {
 
@@ -8,21 +7,32 @@ class UserController {
         this.user = new User();
     }
 
-    signupUser(request, response) {
+    async signupUser(request, response) {
         let userName = request.body.userName;
         let email = request.body.email;
         let password = request.body.password;
-        this.user.create(userName, email, password);
+        try {
+            await this.user.create(userName, email, password);
+            response.status(200).end();
+        }
+        catch (error) {
+            response.status(500).json({error : 'unable to signup user'});
+        }
     }
 
     async loginUser(request, response) {
         let userName = request.body.username;
         let password = request.body.password;
-        let isUserValid = await this.user.login(userName, password);
-        if (isUserValid)
-            console.log("Yay! signed in");
-        else
-            console.log("you are already a user please sign in with you name and password");
+        try {
+            let isUserValid = await this.user.login(userName, password);
+            if (isUserValid) {
+
+                response.status(200).end();
+            }
+        }
+        catch (error) {
+            response.status(500).json({error : 'unable to login user'});
+        }
     }
 
     createRoutes() {
@@ -32,6 +42,7 @@ class UserController {
 
     }
 }
+
 
 
 module.exports = UserController;
