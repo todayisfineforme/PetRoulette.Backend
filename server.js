@@ -7,7 +7,7 @@ const router = require('./router');
 const app = express();
 
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 3000;
 
 
 app.use(cors());
@@ -15,5 +15,5 @@ app.use(express.urlencoded({extended: true}));
 app.use(bodyParser.json());
 router.createRoutes(app);
 
-app.listen(PORT, () => console.log(`API is listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`APP is listening on port ${PORT}`));
 
