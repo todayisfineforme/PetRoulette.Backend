@@ -13,13 +13,13 @@ class PetController {
         let petName = request.body.petName;
         let note = request.body.note;
         let petId = request.body.petId;
-        let userId = request.body.userId;
+        let userId = request.session.userid || 1;
         try {
-            await this.pet.addWishList(petName, note, petId, userId);
+            await this.pet.addWishList(petName, note,petId, userId);
             response.status(200).json({ success: 'wishlist added sucessfully' });
         }
         catch (error) {
-            response.status(500).json({ error: 'unable to get add pet to wishlist' });
+            response.status(500).json({ error: 'unable to add pet to wishlist' });
         }
     }
 

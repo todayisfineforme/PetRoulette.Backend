@@ -8,8 +8,8 @@ class Pet {
 
     addWishList(petName, note, petId, userId) {
         let table_name = 'wishlist';
-        let columns = ['petName', 'note', 'petId', 'userId'];
-        let values = [`'${petName}'`, `'${note}'`, `'${petId}'`, `'${userId}'`];
+        let columns = ['petName', 'note','petId', 'userId'];
+        let values = [`'${petName}'`, `'${note}'`,`'${petId}'`, `'${userId}'`];
         return this.orm.create(table_name, columns, values);
     }
 
