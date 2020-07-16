@@ -56,6 +56,45 @@ class ORM {
 
         });
     }
+
+
+    update(table_name, columns, condition) {
+        return new Promise(async (resolve, reject) => {
+
+            if (!this.connection)
+                await this.initialize();
+
+            let query = `UPDATE ${table_name} SET ${columns} WHERE ${condition}`;
+
+            try {
+                await this.connection.query(query);
+                resolve();
+            } catch (error) {
+
+                reject(error);
+            }
+
+        });
+    }
+
+    delete(table_name,condition) {
+        return new Promise(async (resolve, reject) => {
+
+            if (!this.connection)
+                await this.initialize();
+
+            let query = `DELETE FROM ${table_name} WHERE ${condition}`;
+
+            try {
+                await this.connection.query(query);
+                resolve();
+            } catch (error) {
+
+                reject(error);
+            }
+
+        });
+    }
 }
 
 module.exports = ORM;

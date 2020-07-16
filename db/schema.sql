@@ -15,6 +15,8 @@ CREATE TABLE user(
 CREATE TABLE wishlist
  (
     `id` INT NOT NULL AUTO_INCREMENT,
+    `petname` VARCHAR(256) NOT NULL,
+    `note` VARCHAR(256),
     `userId` INT NOT NULL,
     `petId` INT NOT NULL,
     PRIMARY KEY(`id`),
