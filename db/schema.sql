@@ -16,6 +16,8 @@ CREATE TABLE wishlist
  (
     `id` INT NOT NULL AUTO_INCREMENT,
     `petname` VARCHAR(256) NOT NULL,
+    `photoUrl` VARCHAR(256) NOT NULL,
+    `profileUrl` VARCHAR(256) NOT NULL,
     `note` VARCHAR(256),
     `userId` INT NOT NULL,
     `petId` INT NOT NULL,

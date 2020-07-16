@@ -6,10 +6,10 @@ class Pet {
         this.orm = new ORM();
     }
 
-    addWishList(petName, note, petId, userId) {
+    addWishList(petName, note,photoUrl,profileUrl, petId, userId) {
         let table_name = 'wishlist';
-        let columns = ['petName', 'note', 'petId', 'userId'];
-        let values = [`'${petName}'`, `'${note}'`, `'${petId}'`, `'${userId}'`];
+        let columns = ['petName', 'note','photoUrl','profileUrl','petId', 'userId'];
+        let values = [`'${petName}'`, `'${note}'`,`'${photoUrl}'`,`'${profileUrl}'`,`'${petId}'`, `'${userId}'`];
         return this.orm.create(table_name, columns, values);
     }
 

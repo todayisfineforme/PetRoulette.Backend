@@ -12,14 +12,16 @@ class PetController {
     async addPetToWishlist(request, response) {
         let petName = request.body.petName;
         let note = request.body.note;
+        let photoUrl=request.body.photoUrl;
+        let profileUrl=request.body.profileUrl
         let petId = request.body.petId;
-        let userId = request.body.userId;
+        let userId = request.session.userid;
         try {
-            await this.pet.addWishList(petName, note, petId, userId);
+            await this.pet.addWishList(petName, note,photoUrl,profileUrl,petId, userId);
             response.status(200).json({ success: 'wishlist added sucessfully' });
         }
         catch (error) {
-            response.status(500).json({ error: 'unable to get add pet to wishlist' });
+            response.status(500).json({ error: 'unable to add pet to wishlist' });
         }
     }
 
