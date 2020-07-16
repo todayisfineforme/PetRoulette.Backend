@@ -15,7 +15,7 @@ class PetController {
         let photoUrl=request.body.photoUrl;
         let profileUrl=request.body.profileUrl
         let petId = request.body.petId;
-        let userId = request.session.userid || 1;
+        let userId = request.session.userid;
         try {
             await this.pet.addWishList(petName, note,photoUrl,profileUrl,petId, userId);
             response.status(200).json({ success: 'wishlist added sucessfully' });
