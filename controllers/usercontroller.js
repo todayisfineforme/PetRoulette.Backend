@@ -21,17 +21,21 @@ class UserController {
     }
 
     async loginUser(request, response) {
-        let userName = request.body.username;
+        let userName = request.body.userName;
         let password = request.body.password;
         try {
             let user = await this.user.login(userName, password);
             if (user) {
-                request.session.userid = user.userid;
-                response.status(200).json({ success: 'user logged in' });
+                response.status(200).json({ 
+                    success: 'user logged in',
+                    userid: user.id});
+            }
+            else{
+                response.status(401).json({ failure: 'could not log in' });
             }
         }
         catch (error) {
-            response.status(500).json({ error: 'unable to login user' });
+            response.status(401).json({ error: 'unable to login user' });
         }
     }
 
@@ -44,7 +48,6 @@ class UserController {
     }
 
     createRoutes() {
-        //will comment it out when an with authentication or it will block the person loging in.
         // this.app.get('*', (request, response, next) => this.checkUserAuthentication(request, response, next));
         this.app.post('/user/signup', (request, response) => this.signupUser(request, response));
         this.app.post('/user/signin', (request, response) => this.loginUser(request, response));
