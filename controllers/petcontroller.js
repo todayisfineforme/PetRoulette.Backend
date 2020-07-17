@@ -15,9 +15,10 @@ class PetController {
         let photoUrl=request.body.photoUrl;
         let profileUrl=request.body.profileUrl
         let petId = request.body.petId;
-        let userId = request.session.userid;
+        let userId = request.body.userid;
+        console.log("controller");
         try {
-            await this.pet.addWishList(petName, note,photoUrl,profileUrl,petId, userId);
+            await this.pet.addWishList(petName, note, photoUrl, profileUrl, petId, userId);
             response.status(200).json({ success: 'wishlist added sucessfully' });
         }
         catch (error) {
