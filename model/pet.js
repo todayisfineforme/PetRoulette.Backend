@@ -21,11 +21,11 @@ class Pet {
 
     }
 
-    async update(id,note) {
+    async update(id, note) {
         let table_name = 'wishlist';
         let columns = [`note='${note}'`];
         let condition = `id='${id}'`;
-        this.orm.update(table_name, columns, condition);
+        return this.orm.update(table_name, columns, condition);
     }
 
     deletewishlistItem(id) {

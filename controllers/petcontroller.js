@@ -15,7 +15,7 @@ class PetController {
         let photoUrl=request.body.photoUrl;
         let profileUrl=request.body.profileUrl
         let petId = request.body.petId;
-        let userId = request.session.userid;
+        let userId = request.body.userid;
         try {
             await this.pet.addWishList(petName, note,photoUrl,profileUrl,petId, userId);
             response.status(200).json({ success: 'wishlist added sucessfully' });
@@ -38,8 +38,10 @@ class PetController {
 
     async updateWishlistNote(request, response) {
         let note = request.body.note;
+        let wishlistId = request.body.wishlistId;
+
         try {
-            await this.pet.update(note);
+            await this.pet.update(wishlistId, note);
             response.json({ success: 'update' });
         }
         catch (error) {
@@ -48,7 +50,7 @@ class PetController {
     }
 
     async deletewishlist(request, response) {
-        let id = request.params.id;
+        let id = request.body.wishlistId;
         try {
             await this.pet.deletewishlistItem(id);
             response.json({ success: 'wishlist deleted' });
@@ -63,12 +65,9 @@ class PetController {
         this.app.post('/animals/add', (request, response) => this.addPetToWishlist(request, response));
         this.app.get('/animals/wishlist/:userid', (request, response) => this.getWishList(request, response));
         this.app.patch('/animals/wishlist/note', (request, response) => this.updateWishlistNote(request, response));
-        this.app.delete('/animals/wishlist/:id', (request, response) => this.deletewishlist(request, response));
+        this.app.delete('/animals/wishlist/delete', (request, response) => this.deletewishlist(request, response));
     }
 }
-
-
-
 
 
 module.exports = PetController;

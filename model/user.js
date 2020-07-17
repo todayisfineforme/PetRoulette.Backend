@@ -15,10 +15,10 @@ class User {
 
     async login(username, password) {
         let table_name = 'user';
-        let columns = ['username', 'password'];
+        let columns = ['username', 'password','id'];
         let results = await this.orm.select(table_name, columns, `username='${username}' AND password='${password}'`);
 
-        return results.length > 0;
+        return  results.length > 0 ? results[0] : null;
     }
 
 }
