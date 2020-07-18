@@ -39,7 +39,6 @@ class UserController {
         }
     }
 
-
     checkUserAuthentication(request, response, next) {
         if (request.session.userid)
             next();
@@ -48,7 +47,6 @@ class UserController {
     }
 
     createRoutes() {
-        // this.app.get('*', (request, response, next) => this.checkUserAuthentication(request, response, next));
         this.app.post('/user/signup', (request, response) => this.signupUser(request, response));
         this.app.post('/user/signin', (request, response) => this.loginUser(request, response));
     }

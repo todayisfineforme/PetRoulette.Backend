@@ -8,7 +8,6 @@ class PetController {
         this.pet = new Pet();
     }
 
-
     async addPetToWishlist(request, response) {
         let petName = request.body.petName;
         let note = request.body.note;
