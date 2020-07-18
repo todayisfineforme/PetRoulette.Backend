@@ -2,8 +2,9 @@ const ORM = require("../config/orm.js");
 
 class User {
 
-    constructor() {
+    constructor(user) {
         this.orm = new ORM();
+        this.username=user;
     }
 
     create(username, email, password) {
